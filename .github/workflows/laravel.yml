@@ -32,7 +32,7 @@ jobs:
         DB_DATABASE: database/database.sqlite
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       run: |
-        php artisan migrate:fresh --seed
+        php artisan migrate --seed
         vendor/bin/phpunit
     - name: Generating the coverage report
       run: |
