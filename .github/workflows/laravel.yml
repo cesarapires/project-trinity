@@ -2,6 +2,7 @@ name: Executing Laravel Tests
 
 on:
   push:
+    branches: ["main", "develop"]
   pull_request:
     branches: [ "main", "develop" ]
 
@@ -36,6 +37,9 @@ jobs:
         php artisan db:seed
         vendor/bin/phpunit
     - name: Generating the coverage report
+      env:
+        DB_CONNECTION: sqlite
+        DB_DATABASE: database/database.sqlit
       run: |
         php artisan migrate:fresh --seed
         php artisan test --coverage-html report
