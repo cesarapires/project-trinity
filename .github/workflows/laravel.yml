@@ -31,7 +31,7 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-    - run: php artisan migrate:fresh --seed
+      run: php artisan migrate:fresh --seed
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       run: vendor/bin/phpunit
     - name: Generating the coverage report
