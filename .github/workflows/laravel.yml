@@ -28,7 +28,7 @@ jobs:
         mkdir -p database
         touch database/database.sqlite
     - name: Populating database
-    - env:
+      env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
     - run: php artisan migrate:fresh --seed
