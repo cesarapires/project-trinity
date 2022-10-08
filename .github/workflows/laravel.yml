@@ -39,7 +39,7 @@ jobs:
     - name: Generating the coverage report
       env:
         DB_CONNECTION: sqlite
-        DB_DATABASE: database/database.sqlit
+        DB_DATABASE: database/database.sqlite
       run: |
         php artisan migrate:fresh --seed
         php artisan test --coverage-html report
