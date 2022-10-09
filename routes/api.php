@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AddressController;
+use App\Http\Controllers\Api\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('v1')->group(function(){
     Route::name('addresses.')->group(function(){
         Route::resource('addresses', AddressController::class);
+    });
+    Route::name('customers.')->group(function(){
+        Route::resource('customers', CustomerController::class);
     });
 });
