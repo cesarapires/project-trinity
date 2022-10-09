@@ -11,4 +11,14 @@ return [
         'not_found' => 'Address :addressId not found!',
         'error_setting_main' => 'Could not make primary address!',
     ],
+
+    'customer' => [
+        'success_created' => 'The customer was created successfully!',
+        'success_updated' => 'The customer has been updated successfully!',
+        'success_deleted' => 'The customer has been deleted successfully!',
+        'failed_created' => 'Could not create a new customer!',
+        'failed_updated' => 'Could not update a customer!',
+        'failed_deleted' => 'Could not delete a customer!',
+        'not_found' => 'Customer :customerId not found!',
+    ],
 ];
