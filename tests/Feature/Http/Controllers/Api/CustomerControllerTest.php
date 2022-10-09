@@ -21,6 +21,7 @@ class CustomerControllerTest extends TestCase
     {
         $updateRequest = [
             "name" => "Francisco Mário Lopes",
+            "birthdate" => "1963-01-17",
             "cpf" => "003.883.371-92",
             "rg" => "22.595.155-1",
             "cellphone" => "(51) 2756-3676",
@@ -55,6 +56,7 @@ class CustomerControllerTest extends TestCase
     {
         $createRequest = [
             "name" => "Francisco Mário Lopes",
+            "birthdate" => "1963-01-17",
             "cpf" => "003.883.371-92",
             "rg" => "22.595.155-1",
             "cellphone" => "(51) 2756-3676",

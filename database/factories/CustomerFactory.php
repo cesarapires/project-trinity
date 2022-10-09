@@ -18,6 +18,7 @@ class CustomerFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'birthdate' => fake()->date(),
             'cpf' => fake('pt_BR')->cpf(),
             'rg' => fake('pt_BR')->rg(),
             'cellphone' => fake('pt_BR')->cellphoneNumber(),

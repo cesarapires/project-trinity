@@ -15,6 +15,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
+            'birthdate' => 'sometimes|date',
             'cpf' => 'sometimes|string|max:14',
             'rg' => 'sometimes|string|max:14',
             'cellphone' => 'sometimes|string|max:16',
