@@ -15,8 +15,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $addressSeeder = new AddressSeeder();
+        $customerSeeder = new CustomerSeeder();
 
          \App\Models\User::factory(10)->create();
         $addressSeeder->run();
+        $customerSeeder->run();
     }
 }
