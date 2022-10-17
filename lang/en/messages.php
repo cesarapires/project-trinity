@@ -21,4 +21,14 @@ return [
         'failed_deleted' => 'Could not delete a customer!',
         'not_found' => 'Customer :customerId not found!',
     ],
+
+    'order' => [
+        'success_created' => 'The order was created successfully!',
+        'success_updated' => 'The order has been updated successfully!',
+        'success_deleted' => 'The order has been deleted successfully!',
+        'failed_created' => 'Could not create a new order!',
+        'failed_updated' => 'Could not update a order!',
+        'failed_deleted' => 'Could not delete a order!',
+        'not_found' => 'Order :orderId not found!',
+    ],
 ];

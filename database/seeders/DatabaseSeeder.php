@@ -16,9 +16,11 @@ class DatabaseSeeder extends Seeder
     {
         $addressSeeder = new AddressSeeder();
         $customerSeeder = new CustomerSeeder();
+        $orderSeeder = new OrderSeeder();
 
          \App\Models\User::factory(10)->create();
         $addressSeeder->run();
         $customerSeeder->run();
+        $orderSeeder->run();
     }
 }
