@@ -2,11 +2,11 @@
 
 namespace Service\Customer;
 
-use App\Service\Customer\CreateService;
-use App\Service\Customer\CustomerService;
-use App\Service\Customer\DeleteService;
-use App\Service\Customer\ShowService;
-use App\Service\Customer\UpdateService;
+use App\Service\Customer\Create;
+use App\Service\Customer\Customer;
+use App\Service\Customer\Delete;
+use App\Service\Customer\Show;
+use App\Service\Customer\Update;
 use PHPUnit\Framework\TestCase;
 use Mockery;
 
@@ -15,13 +15,13 @@ class CustomerServiceTest extends TestCase
 
     public function setUp(): void
     {
-        $showService = Mockery::mock(ShowService::class);
-        $createService = Mockery::mock(CreateService::class);
-        $updateService = Mockery::mock(UpdateService::class);
-        $delteService = Mockery::mock(DeleteService::class);
+        $showService = Mockery::mock(Show::class);
+        $createService = Mockery::mock(Create::class);
+        $updateService = Mockery::mock(Update::class);
+        $delteService = Mockery::mock(Delete::class);
 
 
-        $this->address = New CustomerService(
+        $this->address = New Customer(
             $showService,
             $createService,
             $updateService,
@@ -31,21 +31,21 @@ class CustomerServiceTest extends TestCase
 
     public function testGetCreateService()
     {
-        $this->assertInstanceOf(CreateService::class, $this->address->getCreateService());
+        $this->assertInstanceOf(Create::class, $this->address->getCreate());
     }
 
     public function testGetDeleteService()
     {
-        $this->assertInstanceOf(DeleteService::class, $this->address->getDeleteService());
+        $this->assertInstanceOf(Delete::class, $this->address->getDelete());
     }
 
     public function testGetShowService()
     {
-        $this->assertInstanceOf(ShowService::class, $this->address->getShowService());
+        $this->assertInstanceOf(Show::class, $this->address->getShow());
     }
 
     public function testGetUpdateService()
     {
-        $this->assertInstanceOf(UpdateService::class, $this->address->getUpdateService());
+        $this->assertInstanceOf(Update::class, $this->address->getUpdate());
     }
 }

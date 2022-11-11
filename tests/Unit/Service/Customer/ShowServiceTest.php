@@ -3,7 +3,7 @@
 namespace Service\Customer;
 
 use App\Models\Customer;
-use App\Service\Customer\ShowService;
+use App\Service\Customer\Show;
 use Mockery;
 use Tests\TestCase;
 
@@ -17,7 +17,7 @@ class ShowServiceTest extends TestCase
         $mockCustomerModel = Mockery::mock(Customer::class);
         $mockCustomerModel->shouldReceive('findOrFail')->andThrow(\Exception::class);
 
-        $createService = new ShowService($mockCustomerModel);
+        $createService = new Show($mockCustomerModel);
         $response = $createService->show($this->customer_id);
         $this->assertEquals($this->jsonFailedShow, $response->getContent());
     }

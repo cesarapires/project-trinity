@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Customer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -18,6 +19,7 @@ class AddressFactory extends Factory
     public function definition()
     {
         return [
+            'customer_id' => fake()->numberBetween(1, 10),
             'cep' => fake()->bothify('#####-###'),
             'address' => fake()->streetName(),
             'complement' => fake()->text('20'),

@@ -23,6 +23,7 @@ class AddressResource extends JsonResource
                 'gia' => $this->gia,
                 'ddd' => $this->ddd,
                 'siafi' => $this->siafi,
+                'customer' => $this->customer,
             ],
         ];
     }

@@ -7,7 +7,7 @@ use App\Http\Requests\Customer\StoreRequest;
 use App\Http\Requests\Customer\UpdateRequest;
 use App\Http\Resources\CustomerResource;
 use App\Models\Customer;
-use App\Service\Customer\CustomerService;
+use App\Service\Customer\Customer as CustomerService;
 use Illuminate\Http\JsonResponse;
 
 class CustomerController extends Controller
@@ -21,23 +21,28 @@ class CustomerController extends Controller
         $this->customerService = $customerService;
     }
 
+    public function index()
+    {
+        return $this->customerService->getAll()->getAll();
+    }
+
     public function store(StoreRequest $request): JsonResponse
     {
-        return $this->customerService->getCreateService()->create($request);
+        return $this->customerService->getCreate()->create($request);
     }
 
     public function show($customer_id): CustomerResource|JsonResponse
     {
-        return $this->customerService->getShowService()->show($customer_id);
+        return $this->customerService->getShow()->show($customer_id);
     }
 
     public function update(UpdateRequest $request, $customer_id): JsonResponse
     {
-        return $this->customerService->getUpdateService()->update($customer_id, $request);
+        return $this->customerService->getUpdate()->update($customer_id, $request);
     }
 
     public function destroy(Customer $customer): JsonResponse
     {
-        return $this->customerService->getDeleteService()->delete($customer);
+        return $this->customerService->getDelete()->delete($customer);
     }
 }

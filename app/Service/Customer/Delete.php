@@ -6,7 +6,7 @@ use App\Http\Resources\ApiResource;
 use App\Models\Customer as CustomerModel;
 use Illuminate\Http\JsonResponse;
 
-class DeleteService
+class Delete
 {
     private CustomerModel $customer;
 

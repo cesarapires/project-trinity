@@ -7,7 +7,7 @@ use App\Http\Resources\ApiResource;
 use App\Models\Customer as CustomerModel;
 use Illuminate\Http\JsonResponse;
 
-class UpdateService
+class Update
 {
     private CustomerModel $customer;
 

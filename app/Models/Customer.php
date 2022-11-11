@@ -10,6 +10,7 @@ class Customer extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'name',
         'birthdate',
         'cpf',
@@ -17,4 +18,9 @@ class Customer extends Model
         'cellphone',
         'telephone',
     ];
+
+    public function addresses()
+    {
+        return $this->hasMany(Address::class, 'customer_id', 'id');
+    }
 }

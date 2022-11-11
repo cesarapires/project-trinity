@@ -7,9 +7,9 @@ use App\Http\Requests\Customer\StoreRequest;
 use App\Http\Requests\Customer\UpdateRequest;
 use App\Http\Resources\CustomerResource;
 use App\Models\Customer;
-use App\Service\Customer\CreateService;
-use App\Service\Customer\DeleteService;
-use App\Service\Customer\UpdateService;
+use App\Service\Customer\Create;
+use App\Service\Customer\Delete;
+use App\Service\Customer\Update;
 use Mockery;
 use Tests\TestCase;
 
@@ -35,7 +35,7 @@ class CustomerControllerTest extends TestCase
         $mockCustomerModel->shouldReceive('update');
         $mockCustomerModel->shouldReceive('findOrFail')->andReturn($mockCustomerModel);
 
-        $updateService = new UpdateService($mockCustomerModel);
+        $updateService = new Update($mockCustomerModel);
 
         $messageExpect = $updateService->update($this->customer_id, $mockUpdateRequest);
 
@@ -69,7 +69,7 @@ class CustomerControllerTest extends TestCase
         $mockCustomerModel = Mockery::mock(Customer::class);
         $mockCustomerModel->shouldReceive('create');
 
-        $createService = new CreateService($mockCustomerModel);
+        $createService = new Create($mockCustomerModel);
 
         $messageExpect = $createService->create($mockStoreRequest);
 
@@ -83,7 +83,7 @@ class CustomerControllerTest extends TestCase
         $mockCustomerModel = Mockery::mock(Customer::class);
         $mockCustomerModel->shouldReceive('delete');
 
-        $createService = new DeleteService($mockCustomerModel);
+        $createService = new Delete($mockCustomerModel);
 
         $messageExpect = $createService->delete($mockCustomerModel);
 

@@ -7,7 +7,7 @@ use App\Http\Resources\ApiResource;
 use App\Models\Customer as CustomerModel;
 use Illuminate\Http\JsonResponse;
 
-class CreateService
+class Create
 {
     private CustomerModel $customer;
 

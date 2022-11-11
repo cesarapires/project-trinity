@@ -24,4 +24,9 @@ class Address extends Model
         'ddd',
         'siafi',
     ];
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
 }
