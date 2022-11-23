@@ -4,7 +4,7 @@ namespace Service\Customer;
 
 use App\Http\Requests\Customer\UpdateRequest;
 use App\Models\Customer;
-use App\Service\Customer\UpdateService;
+use App\Service\Customer\Update;
 use Mockery;
 use Tests\TestCase;
 
@@ -22,7 +22,7 @@ class UpdateServiceTest extends TestCase
         $mockCustomerModel->shouldReceive('update');
         $mockCustomerModel->shouldReceive('findOrFail')->andReturn($mockCustomerModel);
 
-        $updateService = new UpdateService($mockCustomerModel);
+        $updateService = new Update($mockCustomerModel);
 
         $response = $updateService->update($this->customer_id, $mockUpdateRequest);
         $this->assertEquals($this->jsonSuccessUpdated, $response->getContent());
@@ -35,7 +35,7 @@ class UpdateServiceTest extends TestCase
         $mockCustomerModel = Mockery::mock(Customer::class);
         $mockCustomerModel->shouldReceive('update')->andThrow(\Exception::class);
 
-        $updateService = new UpdateService($mockCustomerModel);
+        $updateService = new Update($mockCustomerModel);
         $response = $updateService->update($this->customer_id, $mockUpdateRequest);
         $this->assertEquals($this->jsonFailedUpdated, $response->getContent());
     }

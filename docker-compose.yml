@@ -1,0 +1,33 @@
+version: '2'
+
+services:
+  mysql:
+    image: mysql
+    container_name: mysql
+    ports:
+       - '33060:3306'
+    environment:
+      - MYSQL_DATABASE=db_project_trinity
+      - MYSQL_ROOT_PASSWORD=20ProJect22@TriNity
+  app:
+      container_name: app
+      build:
+          context: .
+          dockerfile: Dockerfile
+      command: 'php artisan serve --host=0.0.0.0 --port=8000'
+      ports:
+          - '8080:8000'
+      volumes:
+          - .:/var/www/html
+      environment:
+          - DB_HOST=mysql
+          - DB_PORT=3306
+          - DB_DATABASE=db_project_trinity
+          - DB_USERNAME=root
+          - DB_PASSWORD=20ProJect22@TriNity
+      read_only: false
+      depends_on:
+          - mysql
+volumes:
+  app:
+    driver: local

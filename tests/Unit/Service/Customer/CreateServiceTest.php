@@ -4,7 +4,7 @@ namespace Service\Customer;
 
 use App\Http\Requests\Customer\StoreRequest;
 use App\Models\Customer;
-use App\Service\Customer\CreateService;
+use App\Service\Customer\Create;
 use Mockery;
 use Tests\TestCase;
 
@@ -20,7 +20,7 @@ class CreateServiceTest extends TestCase
         $mockCustomerModel = Mockery::mock(Customer::class);
         $mockCustomerModel->shouldReceive('create');
 
-        $createService = new CreateService($mockCustomerModel);
+        $createService = new Create($mockCustomerModel);
 
         $response = $createService->create($mockStoreRequest);
         $this->assertEquals($this->jsonSuccessCreated, $response->getContent());
@@ -33,7 +33,7 @@ class CreateServiceTest extends TestCase
         $mockCustomerModel = Mockery::mock(Customer::class);
         $mockCustomerModel->shouldReceive('create')->andThrow(\Exception::class);
 
-        $createService = new CreateService($mockCustomerModel);
+        $createService = new Create($mockCustomerModel);
         $response = $createService->create($mockStoreRequest);
         $this->assertEquals($this->jsonFailedCreated, $response->getContent());
     }

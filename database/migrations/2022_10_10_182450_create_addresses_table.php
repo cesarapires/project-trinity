@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('customer_id')->nullable()->references('id')->on('customers')->nullOnDelete();
             $table->string('cep', '9');
             $table->string('address');
             $table->string('complement')->nullable();

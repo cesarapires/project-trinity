@@ -3,7 +3,7 @@
 namespace Service\Customer;
 
 use App\Models\Customer;
-use App\Service\Customer\DeleteService;
+use App\Service\Customer\Delete;
 use Tests\TestCase;
 use Mockery;
 
@@ -17,7 +17,7 @@ class DeleteServiceTest extends TestCase
         $mockCustomerModel = Mockery::mock(Customer::class);
         $mockCustomerModel->shouldReceive('delete');
 
-        $createService = new DeleteService($mockCustomerModel);
+        $createService = new Delete($mockCustomerModel);
 
         $response = $createService->delete($mockCustomerModel);
         $this->assertEquals($this->jsonSuccessDeleted, $response->getContent());
@@ -28,7 +28,7 @@ class DeleteServiceTest extends TestCase
         $mockCustomerModel = Mockery::mock(Customer::class);
         $mockCustomerModel->shouldReceive('delete')->andThrow(\Exception::class);
 
-        $createService = new DeleteService($mockCustomerModel);
+        $createService = new Delete($mockCustomerModel);
         $response = $createService->delete($mockCustomerModel);
         $this->assertEquals($this->jsonFailedDeleted, $response->getContent());
     }
