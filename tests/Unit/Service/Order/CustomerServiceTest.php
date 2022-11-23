@@ -18,14 +18,14 @@ class OrderServiceTest extends TestCase
         $showService = Mockery::mock(ShowService::class);
         $createService = Mockery::mock(CreateService::class);
         $updateService = Mockery::mock(UpdateService::class);
-        $delteService = Mockery::mock(DeleteService::class);
+        $deleteService = Mockery::mock(DeleteService::class);
 
 
         $this->address = New OrderService(
             $showService,
             $createService,
             $updateService,
-            $delteService
+            $deleteService
         );
     }
 

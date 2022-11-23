@@ -5,6 +5,7 @@ namespace Service\Customer;
 use App\Service\Customer\Create;
 use App\Service\Customer\Customer;
 use App\Service\Customer\Delete;
+use App\Service\Customer\GetAll;
 use App\Service\Customer\Show;
 use App\Service\Customer\Update;
 use PHPUnit\Framework\TestCase;
@@ -18,14 +19,16 @@ class CustomerServiceTest extends TestCase
         $showService = Mockery::mock(Show::class);
         $createService = Mockery::mock(Create::class);
         $updateService = Mockery::mock(Update::class);
-        $delteService = Mockery::mock(Delete::class);
+        $deleteService = Mockery::mock(Delete::class);
+        $getAllService = Mockery::mock(GetAll::class);
 
 
         $this->address = New Customer(
             $showService,
             $createService,
             $updateService,
-            $delteService
+            $deleteService,
+            $getAllService
         );
     }
 
