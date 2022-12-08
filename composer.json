@@ -11,7 +11,8 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "phpunit/php-code-coverage": "^9.2",
-        "squizlabs/php_codesniffer": "*"
+        "squizlabs/php_codesniffer": "*",
+        "zircote/swagger-php": "^4.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
