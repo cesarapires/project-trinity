@@ -20,7 +20,7 @@ class Show
     public function show($customer_id): CustomerResource|JsonResponse
     {
         try{
-            $this->customer = $this->customer->with('addresses')->findOrFail($customer_id);
+            $this->customer = $this->customer->findOrFail($customer_id);
             return new CustomerResource($this->customer);
         } catch (\Exception $exception){
             $apiResponse = $this->setBodyCustomerNotFound($customer_id);
