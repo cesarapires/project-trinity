@@ -24,19 +24,75 @@
                 ],
                 "description": "Store new customer",
                 "operationId": "59d57e1ee7b485895d41c89b775a8779",
-                "parameters": [
-                    {
-                        "name": "customer_id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/components/schemas/Customer/properties/id"
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "$ref": "#/components/schemas/Customer/properties/name"
+                                    },
+                                    "birthdate": {
+                                        "$ref": "#/components/schemas/Customer/properties/birthdate"
+                                    },
+                                    "cpf": {
+                                        "$ref": "#/components/schemas/Customer/properties/cpf"
+                                    },
+                                    "rg": {
+                                        "$ref": "#/components/schemas/Customer/properties/rg"
+                                    },
+                                    "cellphone": {
+                                        "$ref": "#/components/schemas/Customer/properties/cellphone"
+                                    },
+                                    "telephone": {
+                                        "$ref": "#/components/schemas/Customer/properties/telephone"
+                                    }
+                                },
+                                "type": "object"
+                            }
                         }
                     }
-                ],
+                },
                 "responses": {
                     "200": {
-                        "description": "The customer was created successfully!"
+                        "description": "The customer was created successfully!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "success_created"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The customer was created successfully!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "417": {
+                        "description": "Could not create a new customer!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "failed_created"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Could not create a new customer!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -82,6 +138,153 @@
                                         "message": {
                                             "type": "string",
                                             "example": "Customer {customer_id} not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Customer"
+                ],
+                "description": "Update customer",
+                "operationId": "760b3136f6d46279ecbcd702620994f6",
+                "parameters": [
+                    {
+                        "name": "customer_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Customer/properties/id"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "$ref": "#/components/schemas/Customer/properties/name"
+                                    },
+                                    "birthdate": {
+                                        "$ref": "#/components/schemas/Customer/properties/birthdate"
+                                    },
+                                    "cpf": {
+                                        "$ref": "#/components/schemas/Customer/properties/cpf"
+                                    },
+                                    "rg": {
+                                        "$ref": "#/components/schemas/Customer/properties/rg"
+                                    },
+                                    "cellphone": {
+                                        "$ref": "#/components/schemas/Customer/properties/cellphone"
+                                    },
+                                    "telephone": {
+                                        "$ref": "#/components/schemas/Customer/properties/telephone"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The customer has been updated successfully!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "success_updated"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The customer has been updated successfully!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "417": {
+                        "description": "Could not update a customer!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "failed_updated"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Could not update a customer!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Customer"
+                ],
+                "description": "Delete the customer",
+                "operationId": "50e8d29702c868674c8c47f6f1e23d49",
+                "parameters": [
+                    {
+                        "name": "customer_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Customer/properties/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The customer has been deleted successfully!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "success_deleted"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The customer has been deleted successfully!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Could not delete a customer!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "failed_deleted"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Could not delete a customer!"
                                         }
                                     },
                                     "type": "object"
