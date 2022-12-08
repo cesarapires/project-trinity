@@ -1,0 +1,149 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Project Trinity",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/v1/customers": {
+            "get": {
+                "tags": [
+                    "Customer"
+                ],
+                "description": "Get all customers",
+                "operationId": "fddf8e3800951c00bc5fbd50026d7e6a",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Customer"
+                ],
+                "description": "Store new customer",
+                "operationId": "59d57e1ee7b485895d41c89b775a8779",
+                "parameters": [
+                    {
+                        "name": "customer_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Customer/properties/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The customer was created successfully!"
+                    }
+                }
+            }
+        },
+        "/api/v1/customers/{customer_id}": {
+            "get": {
+                "tags": [
+                    "Customer"
+                ],
+                "description": "Get the customer",
+                "operationId": "8f3de6aef808991d23fac52e476a009b",
+                "parameters": [
+                    {
+                        "name": "customer_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Customer/properties/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success: Found Customer.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Customer"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Error: Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "not_found"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Customer {customer_id} not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Customer": {
+                "title": "Customer model",
+                "description": "Customer model",
+                "properties": {
+                    "id": {
+                        "description": "The unique identifier of a customer.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "description": "The name of customer.",
+                        "type": "string",
+                        "maxLength": 256,
+                        "example": "Alisha Muller"
+                    },
+                    "birthdate": {
+                        "description": "The birthdate of customer.",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2002-12-08"
+                    },
+                    "cpf": {
+                        "description": "The cpf of customer.",
+                        "type": "string",
+                        "maxLength": 14,
+                        "example": "943.902.719-38"
+                    },
+                    "rg": {
+                        "description": "The rg of customer.",
+                        "type": "string",
+                        "maxLength": 14,
+                        "example": "07.485.422-4"
+                    },
+                    "cellphone": {
+                        "description": "The cellphone of customer.",
+                        "type": "string",
+                        "maxLength": 16,
+                        "example": "(28) 96560-8354"
+                    },
+                    "telephone": {
+                        "description": "The telephone of customer.",
+                        "type": "string",
+                        "maxLength": 16,
+                        "example": "(28) 96560-8354"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
