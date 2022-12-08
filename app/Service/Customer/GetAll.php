@@ -2,6 +2,7 @@
 
 namespace App\Service\Customer;
 
+use App\Http\Resources\CustomerResource;
 use App\Models\Customer as CustomerModel;
 use Illuminate\Http\JsonResponse;
 
@@ -16,7 +17,7 @@ class GetAll
 
     public function getAll()
     {
-        return $this->customer->all();
+        return CustomerResource::collection($this->customer->cursorPaginate());
     }
 
 }
