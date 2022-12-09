@@ -37,8 +37,10 @@ receivable, in addition to connecting with other services such as cloud shop and
 
 ## 🛠️ Technologies and tools
 
+- **[PHP](https://www.php.net/releases/8.1/en.php)**
 - **[Laravel](https://laravel.com/)**
 - **[PHP Code Sniffer](https://github.com/squizlabs/PHP_CodeSniffer)**
+- **[Swagger-PHP](https://github.com/zircote/swagger-php)**
 
 [//]: # ()
 [//]: # (## License)
