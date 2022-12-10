@@ -45,10 +45,25 @@ class CustomerControllerTest extends TestCase
     public function testShow()
     {
         $response = $this->call('GET', '/api/v1/customers/'.$this->customer_id);
+        $expets = [
+            "data" => [
+                "id" => $this->customer_id,
+                "name" => "Francisco Mário Lopes",
+                "birthdate" => "1963-01-17",
+                "cpf" => "003.883.371-92",
+                "rg" => "22.595.155-1",
+                "cellphone" => "(51) 2756-3676",
+                "telephone" => "(51) 98746-6584",
+            ],
+        ];
 
-        $expets = new CustomerResource(Customer::find($this->customer_id));
+        $mockCustomerModel = Mockery::mock(Customer::class);
+        $mockCustomerModel->shouldReceive('findOrFail');
+        $response = json_decode($response->content(), true);
+        unset($response['data']['addresses']);
+        $mockCustomerModel->shouldReceive('findOrFail')->andReturn($expets);
 
-        $this->assertEquals($expets->response()->getContent(), $response->getContent());
+        $this->assertEquals($expets, $response);
 
     }
 
@@ -74,6 +89,13 @@ class CustomerControllerTest extends TestCase
         $messageExpect = $createService->create($mockStoreRequest);
 
         $this->assertEquals($messageExpect->getContent(), $response->getContent());
+    }
+
+    public function testGetAll()
+    {
+        $response = $this->call('GET', '/api/v1/customers');
+
+        $response->assertStatus(200);
     }
 
     public function testDestroy()
