@@ -5,6 +5,316 @@
         "version": "0.1"
     },
     "paths": {
+        "/api/v1/addresses": {
+            "post": {
+                "tags": [
+                    "Address"
+                ],
+                "description": "Store new address",
+                "operationId": "9d542a6f3e0e00b02ababc0da8e022bc",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "cep": {
+                                        "$ref": "#/components/schemas/Address/properties/cep"
+                                    },
+                                    "address": {
+                                        "$ref": "#/components/schemas/Address/properties/address"
+                                    },
+                                    "complement": {
+                                        "$ref": "#/components/schemas/Address/properties/complement"
+                                    },
+                                    "number": {
+                                        "$ref": "#/components/schemas/Address/properties/number"
+                                    },
+                                    "district": {
+                                        "$ref": "#/components/schemas/Address/properties/district"
+                                    },
+                                    "city": {
+                                        "$ref": "#/components/schemas/Address/properties/city"
+                                    },
+                                    "state": {
+                                        "$ref": "#/components/schemas/Address/properties/state"
+                                    },
+                                    "ibge": {
+                                        "$ref": "#/components/schemas/Address/properties/ibge"
+                                    },
+                                    "gia": {
+                                        "$ref": "#/components/schemas/Address/properties/gia"
+                                    },
+                                    "ddd": {
+                                        "$ref": "#/components/schemas/Address/properties/ddd"
+                                    },
+                                    "siafi": {
+                                        "$ref": "#/components/schemas/Address/properties/siafi"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The address was created successfully!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "success_created"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The address was created successfully!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "417": {
+                        "description": "Could not create a new address!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "failed_created"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Could not create a new address!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/addresses/{address_id}": {
+            "get": {
+                "tags": [
+                    "Address"
+                ],
+                "description": "Get the address",
+                "operationId": "664a7297568fd920547bee84183f62af",
+                "parameters": [
+                    {
+                        "name": "address_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Address/properties/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success: Found Address.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Address"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Error: Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "not_found"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Address {address_id} not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Address"
+                ],
+                "description": "Delete the address",
+                "operationId": "49cb22b3eb172af1e5f524432fb56586",
+                "parameters": [
+                    {
+                        "name": "address_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Address/properties/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The address has been deleted successfully!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "success_deleted"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The address has been deleted successfully!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Could not delete a address!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "failed_deleted"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Could not delete a address!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/addresses/{addres_id}": {
+            "put": {
+                "tags": [
+                    "Address"
+                ],
+                "description": "Update customer",
+                "operationId": "c3fd1eaf9a794d45f187e4da8d74310a",
+                "parameters": [
+                    {
+                        "name": "addres_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Customer/properties/id"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "cep": {
+                                        "$ref": "#/components/schemas/Address/properties/cep"
+                                    },
+                                    "address": {
+                                        "$ref": "#/components/schemas/Address/properties/address"
+                                    },
+                                    "complement": {
+                                        "$ref": "#/components/schemas/Address/properties/complement"
+                                    },
+                                    "number": {
+                                        "$ref": "#/components/schemas/Address/properties/number"
+                                    },
+                                    "district": {
+                                        "$ref": "#/components/schemas/Address/properties/district"
+                                    },
+                                    "city": {
+                                        "$ref": "#/components/schemas/Address/properties/city"
+                                    },
+                                    "state": {
+                                        "$ref": "#/components/schemas/Address/properties/state"
+                                    },
+                                    "ibge": {
+                                        "$ref": "#/components/schemas/Address/properties/ibge"
+                                    },
+                                    "gia": {
+                                        "$ref": "#/components/schemas/Address/properties/gia"
+                                    },
+                                    "ddd": {
+                                        "$ref": "#/components/schemas/Address/properties/ddd"
+                                    },
+                                    "siafi": {
+                                        "$ref": "#/components/schemas/Address/properties/siafi"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The address has been updated successfully!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "success_updated"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The address has been updated successfully!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "417": {
+                        "description": "Could not update a address!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "failed_updated"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Could not update a address!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/customers": {
             "get": {
                 "tags": [
@@ -298,6 +608,91 @@
     },
     "components": {
         "schemas": {
+            "Address": {
+                "title": "Address model",
+                "description": "Address model",
+                "properties": {
+                    "id": {
+                        "description": "The unique identifier of a address.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "cep": {
+                        "description": "The Zip address code.",
+                        "type": "string",
+                        "maxLength": 9,
+                        "example": "75352-805"
+                    },
+                    "address": {
+                        "description": "The address.",
+                        "type": "string",
+                        "maxLength": 256,
+                        "example": "Darlene Land"
+                    },
+                    "complement": {
+                        "description": "The complement of address (Apartament, Condomain name)",
+                        "type": "string",
+                        "maxLength": 256,
+                        "example": "Expedita dicta sit."
+                    },
+                    "number": {
+                        "description": "The number of address",
+                        "type": "string",
+                        "maxLength": 6,
+                        "example": "256"
+                    },
+                    "district": {
+                        "description": "The name of district",
+                        "type": "string",
+                        "maxLength": 256,
+                        "example": "Sunsari"
+                    },
+                    "city": {
+                        "description": "The name of city",
+                        "type": "string",
+                        "maxLength": 256,
+                        "example": "East Rodrickfort"
+                    },
+                    "state": {
+                        "description": "The name of state",
+                        "type": "string",
+                        "maxLength": 256,
+                        "example": "SD"
+                    },
+                    "country": {
+                        "description": "The name of country",
+                        "type": "string",
+                        "maxLength": 256,
+                        "example": "Cote d'Ivoire"
+                    },
+                    "ibge": {
+                        "description": "The municipality code is composed of 7 numeric digits, with \nthe first two representing the Federal Union. Inform the \ncode 9999999 and the name of the municipality “EXTERIOR” \nfor operations involving locations abroad.",
+                        "type": "string",
+                        "maxLength": 256,
+                        "example": "826059"
+                    },
+                    "gia": {
+                        "description": "The GIA, ICMS Information and Calculation Guide, is the instrument\nby which the taxpayer registered and obliged to book tax books must \ndeclare, within the regulatory period, the economic-fiscal information,\naccording to the tax calculation regime to which he is subject. \nor according to the operations or installments carried out in the period.",
+                        "type": "string",
+                        "maxLength": 256,
+                        "example": "null"
+                    },
+                    "ddd": {
+                        "description": "DDD stands for Direct Distance Dial. It is an automatic telephone connection\nsystem between different national urban areas. The DDD is a code consisting \nof 2 digits that identify the main cities in the country and must be added to \nthe telephone number, along with the operator code.",
+                        "type": "string",
+                        "maxLength": 256,
+                        "example": "35"
+                    },
+                    "siafi": {
+                        "description": "The Integrated System of Financial Administration of the Federal Government \npresents itself as a computerized system for processing and controlling the \nbudgetary, financial and patrimonial execution of the agencies of the direct \nand indirect federal Public Administration.",
+                        "type": "string",
+                        "maxLength": 256,
+                        "example": "252"
+                    }
+                },
+                "type": "object"
+            },
             "Customer": {
                 "title": "Customer model",
                 "description": "Customer model",
