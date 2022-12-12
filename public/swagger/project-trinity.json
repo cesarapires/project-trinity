@@ -604,6 +604,284 @@
                     }
                 }
             }
+        },
+        "/api/v1/orders": {
+            "post": {
+                "tags": [
+                    "Order"
+                ],
+                "description": "Store new order",
+                "operationId": "8cb746eb001b58ac915930ba43cfdf0d",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "date_order": {
+                                        "$ref": "#/components/schemas/Order/properties/date_order"
+                                    },
+                                    "status": {
+                                        "$ref": "#/components/schemas/Order/properties/status"
+                                    },
+                                    "subtotal_products": {
+                                        "$ref": "#/components/schemas/Order/properties/subtotal_products"
+                                    },
+                                    "discount": {
+                                        "$ref": "#/components/schemas/Order/properties/discount"
+                                    },
+                                    "addition": {
+                                        "$ref": "#/components/schemas/Order/properties/addition"
+                                    },
+                                    "total": {
+                                        "$ref": "#/components/schemas/Order/properties/total"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The order was created successfully!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "success_created"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The order was created successfully!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "417": {
+                        "description": "Could not create a new order!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "failed_created"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Could not create a new order!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/orders/{order_id}": {
+            "get": {
+                "tags": [
+                    "Order"
+                ],
+                "description": "Get the order",
+                "operationId": "20d856e36f464f13ed216b73d5eddc61",
+                "parameters": [
+                    {
+                        "name": "order_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Order/properties/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success: Found Order.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Order"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Error: Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "not_found"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Order {order_id} not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Order"
+                ],
+                "description": "Update order",
+                "operationId": "74f876416cc9bb2855f78a434e8f007c",
+                "parameters": [
+                    {
+                        "name": "order_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Order/properties/id"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "date_order": {
+                                        "$ref": "#/components/schemas/Order/properties/date_order"
+                                    },
+                                    "status": {
+                                        "$ref": "#/components/schemas/Order/properties/status"
+                                    },
+                                    "subtotal_products": {
+                                        "$ref": "#/components/schemas/Order/properties/subtotal_products"
+                                    },
+                                    "discount": {
+                                        "$ref": "#/components/schemas/Order/properties/discount"
+                                    },
+                                    "addition": {
+                                        "$ref": "#/components/schemas/Order/properties/addition"
+                                    },
+                                    "total": {
+                                        "$ref": "#/components/schemas/Order/properties/total"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The order has been updated successfully!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "success_updated"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The order has been updated successfully!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "417": {
+                        "description": "Could not update a order!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "failed_updated"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Could not update a order!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Order"
+                ],
+                "description": "Delete the order",
+                "operationId": "e748271a93f14ee450cfd13440e2b091",
+                "parameters": [
+                    {
+                        "name": "order_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/Order/properties/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The order has been deleted successfully!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "success_deleted"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The order has been deleted successfully!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Could not delete a order!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "example": "failed_deleted"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Could not delete a order!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -738,6 +1016,59 @@
                         "type": "string",
                         "maxLength": 16,
                         "example": "(28) 96560-8354"
+                    }
+                },
+                "type": "object"
+            },
+            "Order": {
+                "title": "Order model",
+                "description": "Order model",
+                "properties": {
+                    "id": {
+                        "description": "The unique identifier of a order.",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "date_order": {
+                        "description": "The date of order.",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2002-12-08"
+                    },
+                    "status": {
+                        "description": "The status of order.",
+                        "type": "string",
+                        "maxLength": 14,
+                        "example": "O"
+                    },
+                    "subtotal_products": {
+                        "description": "The status of order.",
+                        "type": "number",
+                        "format": "float",
+                        "maxLength": 14,
+                        "example": "14.56"
+                    },
+                    "discount": {
+                        "description": "The discount of order.",
+                        "type": "number",
+                        "format": "float",
+                        "maxLength": 14,
+                        "example": "1"
+                    },
+                    "addition": {
+                        "description": "The addition of order.",
+                        "type": "number",
+                        "format": "float",
+                        "maxLength": 14,
+                        "example": "5.46"
+                    },
+                    "total": {
+                        "description": "The total of order.",
+                        "type": "number",
+                        "format": "float",
+                        "maxLength": 14,
+                        "example": "19.00"
                     }
                 },
                 "type": "object"
